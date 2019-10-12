@@ -33,7 +33,7 @@ class InputViewController: UIViewController {
     
     @IBAction func gotoARAction() {
         guard let username = usernameTextField.text,
-            username.characters.count > 0 else {
+            username.count > 0 else {
                 return alert(message: "Please enter a username")
         }
         

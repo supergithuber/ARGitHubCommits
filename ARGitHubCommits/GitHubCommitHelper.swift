@@ -37,11 +37,11 @@ class GitHubCommitHelper {
             return nil
         }
         
-        let matched = reg.matches(in: webData, range: NSRange(location: 0, length: webData.characters.count))
+        let matched = reg.matches(in: webData, range: NSRange(location: 0, length: webData.count))
         
         let commitArray: [GitHubCommitData] = matched.map { item in
             func substringForRange(at index: Int) -> String {
-                return webData.substring(with: Range(item.rangeAt(index), in: webData)!)
+                return webData.substring(with: Range(item.range(at: index), in: webData)!)
             }
             let color = UIColor(hexString: substringForRange(at: 2))
             let count = Int(substringForRange(at: 4))!
